@@ -1,0 +1,23 @@
+---
+# Install logging monitor. The monitor will automatically pickup logs sent to
+# syslog.
+
+- name: DOWNLOAD AGENT SCRIPT
+  get_url:
+    url: '{{ logging_installer_url }}'
+    dest: /tmp/{{ logging_installer_name }}
+    mode: '0755'
+
+- name: CHECK IF GOOGLE-FLUENTD SERVICE EXISTS
+  stat: path=/etc/init.d/google-fluentd
+  register: google_fluentd_service_status
+
+- name: INSTALLING GOOGLE-FLUENTD 
+  when: not google_fluentd_service_status.stat.exists
+  command: /tmp/{{ logging_installer_name }} 
+
+- name: STARTED GOOGLE-FLUENTD
+  service: 
+    name: google-fluentd.service 
+    state: started
+

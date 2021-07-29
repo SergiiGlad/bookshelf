@@ -1,0 +1,16 @@
+---
+
+- name: Install and run bookshelf app
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - role: logging_monitor
+    - role: cloud-sql-proxy
+    - role: pythonapp
+    - role: supervisor 
+
+
+
+
+  

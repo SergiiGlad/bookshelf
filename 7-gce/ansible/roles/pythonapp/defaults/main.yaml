@@ -1,0 +1,4 @@
+---
+secret_mysql_password_name: mysql_password
+cloudsql_database: bookshelf
+ansible_remote_tmp: "{{ app_path }}/7-gce"

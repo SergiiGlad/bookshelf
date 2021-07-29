@@ -1,0 +1,56 @@
+---
+# This playbook contains palys that will be run bookshelf application
+- name: INSTALL PACKAGES
+  apt:
+    name: python-setuptools
+    state: present
+    update_cache: yes
+
+- name: ENSURE GROUP PYTHONAPP EXISTS
+  group:
+    name: pythonapp 
+    
+- name: ADD THE USER PYTHONAPP
+  user:
+    name: pythonapp
+    comment: Python App
+    create_home: yes
+    group: pythonapp
+
+- name: INSTALL VIRTUALENV
+  pip: 
+    name: virtualenv
+
+- name: CREATE VIRTUALENV
+  pip:
+    requirements: "{{ app_path }}/7-gce/requirements.txt"
+    virtualenv: "{{ app_path }}/7-gce/env"
+    virtualenv_python: python3
+
+- name: STATS OF THE APP FOLDER
+  ansible.builtin.stat:
+    path: "{{ app_path }}"
+  register: app_folder    
+
+- name: CHANGE PYTHONAPP:PYTHONAPP FOR APP FOLDER
+  ansible.builtin.file:
+    path: "{{ app_path }}"
+    owner: pythonapp
+    group: pythonapp
+    recurse: yes
+  when: app_folder.stat.gr_name != 'pythonapp'
+
+- name: CHECK IF SERVICE SUPERVISOR EXISTS
+  service_facts:
+  register: service_status
+
+- name: ACTIVATE VIRTUALENV AND CREATE CLOUDSQL MODEL
+  shell: bash -c "source {{ app_path }}/7-gce/env/bin/activate; python {{ app_path }}/7-gce/bookshelf/model_cloudsql.py"
+  when: "'supervisor' not in services"
+
+- name: CONFIGURE CONFIG.PY
+  template: src=config.py.j2 dest="{{ app_path }}/7-gce/config.py"
+
+
+
+    

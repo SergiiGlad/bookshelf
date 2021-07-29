@@ -1,0 +1,9 @@
+---
+app_path: /opt/app
+cloud_sql_instance_name: book3
+gcp_project_id: steel-citizen-313716
+region: us-central1
+cloud_sql_proxy_connection_name: "{{ gcp_project_id  }}:{{ region }}:{{ cloud_sql_instance_name }}"
+cloud_images_bucket: "bookshelf3-images-storage-{{ gcp_project_id }}"
+pythonapp_source_repo_url: https://source.developers.google.com/p/{{ gcp_project_id }}/r/bookshelf
+

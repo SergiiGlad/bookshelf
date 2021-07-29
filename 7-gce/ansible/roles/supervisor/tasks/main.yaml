@@ -1,0 +1,24 @@
+- name: INSTALL SUPERVISOR
+  apt:
+    name: supervisor
+    state: present
+    update_cache: yes
+  tags:
+    supervisor
+
+- name: PUT SUPERVISOR CONFIGURATION IN /ETC/CONF.D
+  ansible.builtin.copy:
+    src: "{{ app_path }}/7-gce/gce/linux_conf/python-app.conf"
+    dest: "/etc/supervisor/conf.d/python-app.conf"
+  notify:
+    - reload systemd configuration
+    - restart supervisor        
+
+- name: START SUPERVISOR
+  service:
+    name: "supervisor"
+    state: started
+    enabled: yes
+  tags:
+    supervisor
+

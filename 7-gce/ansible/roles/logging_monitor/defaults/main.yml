@@ -1,0 +1,3 @@
+---
+logging_installer_url: https://storage.googleapis.com/signals-agents/logging/google-fluentd-install.sh
+logging_installer_name: google-fluentd-install.sh

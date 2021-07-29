@@ -1,0 +1,6 @@
+---
+- name: RELOAD SYSTEMD CONFIGURATION
+  systemd: daemon_reload=yes
+
+- name: RESTART SUPERVISOR
+  service: name=supervisor state=restarted
