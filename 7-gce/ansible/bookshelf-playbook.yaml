@@ -5,9 +5,13 @@
   connection: local
   gather_facts: no
   roles:
+    # Install Fluentd logging monitor (pre-configured version provided by GCP)   
     - role: logging_monitor
+    # Setup Cloud SQL Proxy     
     - role: cloud-sql-proxy
+    # Install and configure application
     - role: pythonapp
+    # Run application
     - role: supervisor 
 
 

@@ -44,7 +44,7 @@
   service_facts:
   register: service_status
 
-- name: ACTIVATE VIRTUALENV AND CREATE CLOUDSQL MODEL
+- name: ACTIVATE VIRTUALENV AND CREATE APPLICATION TABLES IN CLOUDSQL
   shell: bash -c "source {{ app_path }}/7-gce/env/bin/activate; python {{ app_path }}/7-gce/bookshelf/model_cloudsql.py"
   when: "'supervisor' not in services"
 
