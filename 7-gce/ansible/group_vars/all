@@ -1,7 +1,7 @@
 ---
 app_path: /opt/app
 cloud_sql_instance_name: book3
-gcp_project_id: steel-citizen-313716
+gcp_project_id: polished-citron-326213
 region: us-central1
 cloud_sql_proxy_connection_name: "{{ gcp_project_id  }}:{{ region }}:{{ cloud_sql_instance_name }}"
 cloud_images_bucket: "bookshelf-images-storage-{{ gcp_project_id }}"
