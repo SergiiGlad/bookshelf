@@ -1,6 +1,6 @@
 ---
 app_path: /opt/app
-cloud_sql_instance_name: book3
+cloud_sql_instance_name: bookdemo
 gcp_project_id: polished-citron-326213
 region: us-central1
 cloud_sql_proxy_connection_name: "{{ gcp_project_id  }}:{{ region }}:{{ cloud_sql_instance_name }}"
