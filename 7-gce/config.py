@@ -33,7 +33,7 @@ DATA_BACKEND = 'cloudsql'
 
 # Google Cloud Project ID. This can be found on the 'Overview' page at
 # https://console.developers.google.com
-PROJECT_ID = 'steel-citizen-313716'
+PROJECT_ID = 'polished-citron-326213'
 
 #  Accessing password
 secret_id = "mysql_password"
@@ -60,7 +60,7 @@ CLOUDSQL_DATABASE = 'bookshelf'
 # Set this value to the Cloud SQL connection name, e.g.
 #   "project:region:cloudsql-instance".
 # You must also update the value in app.yaml.
-CLOUDSQL_CONNECTION_NAME = 'steel-citizen-313716:us-central1:bookshelf3'
+CLOUDSQL_CONNECTION_NAME = "{}:us-central1:bookdemo".format(PROJECT_ID)
 
 # The CloudSQL proxy is used locally to connect to the cloudsql instance.
 # To start the proxy, use:
@@ -107,7 +107,7 @@ MONGO_URI = 'mongodb://user:password@host:27017/database'
 #
 # You can adjust the max content length and allow extensions settings to allow
 # larger or more varied file types if desired.
-CLOUD_STORAGE_BUCKET = 'bookshelf-images-storage-steel-citizen-313716'
+CLOUD_STORAGE_BUCKET = "bookshelf-images-{}-313716".format(PROJECT_ID)
 MAX_CONTENT_LENGTH = 8 * 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 

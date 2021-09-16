@@ -9,7 +9,7 @@ After=networking.service
 [Service]
 Type=simple
 WorkingDirectory=/usr/local/bin
-ExecStart=/usr/local/bin/cloud_sql_proxy -dir=/var/run/cloud-sql-proxy -instances=steel-citizen-313716:us-central1:bookshelf3=tcp:3306
+ExecStart=/usr/local/bin/cloud_sql_proxy -dir=/var/run/cloud-sql-proxy -instances=polished-citron-326213:us-central1:bookshelf3=tcp:3306
 Restart=always
 StandardOutput=journal
 User=root
