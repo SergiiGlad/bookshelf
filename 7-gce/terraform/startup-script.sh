@@ -21,7 +21,7 @@ PROJECTID=$(curl -s "http://metadata.google.internal/computeMetadata/v1/project/
 
 # Install dependencies from apt
 apt-get update
-apt-get install git python-pip gunicorn -yq
+apt-get install git python-pip -yq
 
 # Install Ansible
 pip install ansible
